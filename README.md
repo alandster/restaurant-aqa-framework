@@ -13,6 +13,13 @@ Developed as the final capstone project for **IT Marathon 2026 (Task #10 — Tes
 * **Framework Version:** `.NET 10.0` with Microsoft Testing Platform.
 * **CI/CD Quality Gates:** GitHub Actions (`aqa-quality.yml`, `aqa-tests.yml`).
 
+### Test Pyramid & Design Principles
+* **UI & E2E:** End-to-end user journeys executed from the persona perspective (guests joining and selecting dishes, owner inspecting consolidated cart, removing participants, and submitting the pre-order; waiter viewing submitted order).
+* **API Layer:** Fast, isolated validation of authorization (non-owner, unauthenticated, invalid tokens), group boundaries, and data integrity.
+* **Test Isolation & Dynamic Data:** Every test generates its own unique identifiers (`Guid.NewGuid()`), isolated session tokens, and dynamic timestamps (`DateTime.UtcNow.AddMinutes(N)`). No shared persistent test state.
+* **Deterministic Cleanup:** Resources created by tests are registered within `CleanupScope` and swept automatically upon scenario completion.
+* **Parallel Execution:** Tests are stateless and run independently without relying on execution order.
+
 ---
 
 ## 🎯 Test Levels & Covered Scenarios
