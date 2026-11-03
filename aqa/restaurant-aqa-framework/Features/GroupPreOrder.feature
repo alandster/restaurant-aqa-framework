@@ -112,4 +112,3 @@ Feature: Group Pre-Order (Direction 1)
       And the owner reviews the order and removes one participant
       And the owner submits the consolidated pre-order
       Then the waiter sees the final order without dishes of the removed participant
-
